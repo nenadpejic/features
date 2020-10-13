@@ -1,0 +1,39 @@
+/* resets */
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.parent {
+  background-color: #eee;
+
+  /* mandatory */
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y proximity; */
+  /* scroll-padding-top: 1rem; */
+}
+
+.child {
+  height: 400px;
+  margin: 200px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* mandatory */
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+.child:nth-child(1) {
+  background-color: lightcoral;
+}
+.child:nth-child(2) {
+  background-color: lightseagreen;
+}
+.child:nth-child(3) {
+  background-color: lightblue;
+}

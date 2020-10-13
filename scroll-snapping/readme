@@ -1,0 +1,12 @@
+// Parent element needs to have:
+scroll-snap-type: [x | y] [mandatory | proximity];
+
+// Optional:
+scroll-padding-[top | right | bottom | left];
+
+
+// Child element needs to have:
+scroll-snap-align: [start | center | end];
+
+// Optional:
+scroll-snap-stop: always;
