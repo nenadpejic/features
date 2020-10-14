@@ -14,12 +14,13 @@ body {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   /* scroll-snap-type: y proximity; */
-  /* scroll-padding-top: 1rem; */
+  /* scroll-padding-top: 10rem; */
+  /* scroll-padding: 10rem; */
 }
 
 .child {
-  height: 400px;
-  margin: 200px 0;
+  height: 100vh;
+  margin: 100px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,12 +29,18 @@ body {
   scroll-snap-align: center;
   scroll-snap-stop: always;
 }
-.child:nth-child(1) {
+.child:nth-of-type(1) {
   background-color: lightcoral;
 }
-.child:nth-child(2) {
+.child:nth-of-type(2) {
   background-color: lightseagreen;
 }
-.child:nth-child(3) {
+.child:nth-of-type(3) {
   background-color: lightblue;
+}
+.child:nth-of-type(4) {
+  background-color: lightgreen;
+}
+.child:nth-of-type(5) {
+  background-color: lightpink;
 }
