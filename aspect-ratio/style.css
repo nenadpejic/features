@@ -1,0 +1,16 @@
+.width-ctrl {
+  width: 400px;
+}
+
+.height-ctrl {
+  padding-top: 75%;
+  background-color: coral;
+  position: relative;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
