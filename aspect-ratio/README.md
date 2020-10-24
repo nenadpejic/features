@@ -1,4 +1,6 @@
-# Linked List
+# Aspect Ratio
+
+## Setting heigh dynamically according to width
 
 The child elements padding-top and padding-bottom is calculated based on the parent elements width.
 
@@ -6,7 +8,34 @@ Padding value is entered as a percentage value of desired aspect ratio. e.g. For
 
 In order to display content within the "height-ctrl" element, that content needs to be positioned absolute and the "height-ctrl" element to relative.
 
-Some common aspect ratios:
+- Set "width-ctrl" to desired `width`;
+- Set "height-ctrl" `paddint-top: 75%`;
+- Set "content" to `position: absolute`;
+
+```html
+<div class="width-ctrl">
+  <div class="height-ctrl">
+    <div class="content">Aspect ratio 4:3</div>
+  </div>
+</div>
+```
+
+## Setting width dynamically according to height
+
+If you want the width to be dynamically set according to height, you need to use the img tag.
+
+- Set "container" to desired `height`.
+- Set "placeholder" to `height: 100%`.
+- Set "content" to `position: absolute`.
+
+```html
+<div class="container">
+  <img class="placeholder" src="" />
+  <div class="content"></div>
+</div>
+```
+
+## Some common aspect ratios and how to calculate them:
 
 - 1:1 => 100%
 - 4:3 => 75%
