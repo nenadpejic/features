@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Footer Positioning</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .page-content {
+        background-color: lightslategray;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      /* mandatory fields */
+      :root {
+        --footerHeight: 3rem;
+      }
+      .container {
+        min-height: 100vh;
+        position: relative;
+        box-sizing: border-box;
+        padding-bottom: var(--footerHeight);
+      }
+      footer {
+        background-color: lightseagreen;
+        height: var(--footerHeight);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-content">
+        <div>Page-content start</div>
+        <div>Page-content mid</div>
+        <div>Page-content end</div>
+      </div>
+      <footer>Footer content</footer>
+    </div>
+  </body>
+</html>
