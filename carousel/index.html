@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+    <style>
+      /* Resets */
+      ul {
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      /* Carousel */
+      .carousel {
+        position: relative;
+        margin: 0 auto;
+        width: fit-content;
+      }
+
+      /* Slider */
+      .overflow {
+        --width: 800px;
+        width: var(--width);
+        overflow-x: auto;
+        border: 2px solid #333;
+        box-sizing: content-box;
+        /* scroll */
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+      }
+      .overflow::-webkit-scrollbar {
+        display: none;
+      }
+      .slider {
+        display: inline-flex;
+      }
+      .slider .slide {
+        width: var(--width);
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* scroll */
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+      }
+      .slide:nth-child(1) {
+        background-color: #ffd6a5;
+      }
+      .slide:nth-child(2) {
+        background-color: #caffbf;
+      }
+      .slide:nth-child(3) {
+        background-color: #a0c4ff;
+      }
+
+      /* Radios */
+      .radio-container {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Buttons */
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .prev {
+        left: 1rem;
+      }
+      .next {
+        right: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel">
+      <div class="overflow" onscroll="handleScroll(event)">
+        <ul class="slider">
+          <li class="slide">Slide 1</li>
+          <li class="slide">Slide 2</li>
+          <li class="slide">Slide 3</li>
+        </ul>
+      </div>
+
+      <div class="radio-container" onchange="handleChange(event)">
+        <input type="radio" name="slider" value="0" checked />
+        <input type="radio" name="slider" value="1" />
+        <input type="radio" name="slider" value="2" />
+      </div>
+
+      <button onclick="handleClick(event)" class="prev">Prev</button>
+      <button onclick="handleClick(event)" class="next">Next</button>
+    </div>
+
+    <script>
+      // DOM
+      const radioContainer = document.querySelector(".radio-container");
+
+      // state
+      let counter = 0;
+      const width = 800;
+
+      function handleChecked(num) {
+        radioContainer.querySelectorAll("input").forEach((input) => {
+          input.removeAttribute("checked");
+        });
+        radioContainer.querySelector(`input[value="${num}"]`).setAttribute("checked", "");
+      }
+
+      function handleScroll(e) {
+        if (e.target.scrollLeft % width === 0) {
+          counter = e.target.scrollLeft / width;
+          handleChecked(counter);
+        }
+      }
+
+      function handleChange(e) {
+        counter = parseInt(e.target.value);
+        document.querySelector(".overflow").scrollLeft = counter * width;
+      }
+
+      function handleClick(e) {
+        if (e.target.className === "next" && counter < 2) {
+          counter++;
+        } else if (e.target.className === "prev" && counter > 0) {
+          counter--;
+        }
+        document.querySelector(".overflow").scrollLeft = counter * width;
+      }
+    </script>
+  </body>
+</html>
